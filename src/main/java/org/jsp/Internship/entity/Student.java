@@ -19,7 +19,7 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int sid;
+	public int sid;
 	
 	private String fname;
 	private String lname;

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Loginware</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    
+     <link rel = "icon" href ="assets/img/loginware.jpg" type = "image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/" rel="preconnect">
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap" rel="stylesheet">
+    
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+     <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+<main id="main">
+ <section style="background-color:silver;">
+    
+       <div class="stats-item text-center w-100 h-100" text-align: center;>
+       <h1 text-align: center;><b>List of Students</b></h1>
+     <br><br>
+
+		<table  class="container" th:border="2" style="align-items: center;">
+		<thead>
+		<tr>
+		<th>Student ID</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>	
+		<th>Password</th>
+		<th>Course</th>
+		<th>DELETE</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr th:each="student :${students}">
+			<td th:text="${student.sid}"></td>
+			<td th:text="${student.fname}"></td>
+			<td th:text="${student.lname}"></td>
+			<td th:text="${student.email}"></td>
+			<td th:text="${student.password}"></td>
+			<td th:text="${student.course}"></td>
+			<td><a th:href="@{deletbyid/{sid}(sid=${student.sid})}" style="color: red;">DELETE</a></td>
+
+		</tr>
+		</tbody>
+
+</table>
+
+</div>
+</section>
+</main>
+<footer id="footer" class="footer">
+
+  <div class="container footer-top">
+    <div class="row gy-4">
+      <div class="col-lg-5 col-md-12 footer-about">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <span>Loginware</span>
+        </a>
+        <p>Loginware an industry-leading technology company at the forefront of delivering sophisticated and digitally transformative solutions for the manufacturing sector.</p>
+        <div class="social-links d-flex mt-4">
+          <a href="https://api.whatsapp.com/send?phone=+919916609819"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.facebook.com/Loginware-Softtec-Pvt-Ltd-159838271120545/"><i class="bi bi-facebook"></i></a>
+          <a href="https://instagram.com/loginware_softtec_pvt_ltd?igshid=xkw7jj53xx10"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+        <div class="col-lg-2 col-6 footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/mainhome">Product</a></li>
+            <li><a href="/aboutus">About us</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-6 footer-links">
+        <h4>Our Products</h4>
+        <ul>
+          <li><a href="/eagle">Eagle</a></li>            
+            <li><a href="/eaglepro">Eagle Pro</a></li>
+            <li><a href="/sparrow">Sparrow</a></li>
+            <li><a href="/feathergauge">FeatherGauge</a></li>
+            <li><a href="/featherwatt">FeatherWatt</a></li>
+            <li><a href="/vision">Eagle Vision Analytics</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <h4>Contact Us</h4>
+        <p><b>HQ  | </b> Hassan</p>
+        <p><b>CO  | </b> Banglore</p>        
+        <p class="mt-4"><strong>Phone:</strong> <span>+91 9916609819</span></p>
+        <p><strong>Email:</strong> <span>info@loginwaresofttec.com</span></p>
+      </div>
+
+    </div>
+  </div>
+
+</footer><!-- End Footer -->
+  <!-- Scroll Top Button -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
