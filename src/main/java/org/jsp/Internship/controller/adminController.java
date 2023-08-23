@@ -1,9 +1,15 @@
 package org.jsp.Internship.controller;
 
+import java.util.List;
+
+import org.jsp.Internship.entity.Student;
 import org.jsp.Internship.helper.Login;
+import org.jsp.Internship.repositoy.studentRepository;
 import org.jsp.Internship.service.adminService;
+import org.jsp.Internship.service.studentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +23,9 @@ public class adminController {
 
 	@Autowired
 	adminService service;
+
+	@Autowired
+	studentRepository repository;
 	
 	@GetMapping("/admin")
 	public String admin() {
@@ -29,11 +38,27 @@ public class adminController {
 	}
 	
 	@RequestMapping("/deletbyid/{sid}")
-	public String deletbyId(@PathVariable int sid) {
-		service.deletbyId(sid);
-	    return "list-students";
+	public ModelAndView deletbyId(@PathVariable int sid) {
+		ModelAndView andView=service.deletbyId(sid);
+		return andView;
+	    
+	}	
+
+	@RequestMapping("/list-students")
+	public 	ModelAndView liststudents() {
+		ModelAndView andView= new ModelAndView("list-students");
+		List<Student> list=repository.findAll();
+		andView.addObject("students" ,list);
+		return andView;
+	
 	}
-	
-	
+
+//	@GetMapping("/listStudents")
+//	public String listStudents(Model model) {
+//	    List<Student> students = service.getAllStudents();
+//	    model.addAttribute("students", students);
+//	    return "list-students";
+//	}
+
 	
 }

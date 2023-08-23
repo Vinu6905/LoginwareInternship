@@ -4,6 +4,7 @@ import org.jsp.Internship.entity.Student;
 import org.jsp.Internship.service.studentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -112,6 +113,7 @@ public class studentController {
 	public ModelAndView showstudent(@ModelAttribute Student  student) {
 		return service.showstudent(student);
 	}
+	
 	
 	@RequestMapping("/studentlogin")
 	public ModelAndView studentlogin(@ModelAttribute Student student) {

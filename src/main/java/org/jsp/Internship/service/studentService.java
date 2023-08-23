@@ -19,6 +19,7 @@ public class studentService {
 		studentRepository.save(student);
 		
 	}
+	
 	public ModelAndView showstudent(Student student) {
 	ModelAndView andView=new ModelAndView("list-students");
 	List<Student> list=studentRepository.findAll();
@@ -27,6 +28,7 @@ public class studentService {
 	}
 	
 	public ModelAndView studentlogin(Student student) {
+		
 		 ModelAndView modelAndView = new ModelAndView();
 		 String enteredEmail = student.getEmail();
 		 String enteredPassword = student.getPassword();
