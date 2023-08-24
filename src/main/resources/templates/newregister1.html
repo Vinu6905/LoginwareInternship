@@ -87,7 +87,7 @@
               </div>
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Password</b></label>
-             <input type="password" value="" id="myInput" name="password"><br>
+             <input type="password" value="" id="myInput" class="form-control" name="password"><br>
 		<input type="checkbox" onclick="myFunction()">Show Password
 		<script>
 			function myFunction() {
@@ -150,8 +150,9 @@
             
             <div class="mb-3">
             <label for="dropdown"><b>Intern Course</b></label>
-  						<select id="dropdown" name="course">
-  					  <option value="python">Python</option>
+  						<select id="dropdown"  name="course">
+ 						<option value="" disabled selected>Select a course</option>
+   					  <option value="python">Python</option>
   					  <option value="embedded c">Embedded C</option>
   					   <option value="ai">AI & ML</option>
   					    <option value="embedded c">C</option>
@@ -161,29 +162,13 @@
             
             
             <br>
-            <div class="text-center">
+            <div class="text-left">
                 <button type="submit" class="btn btn-primary" onclick="validateForm()">Submit</button>
+                <a class="btn btn-primary" style="margin-left: 25px" href="/mainhome" >Back</a>
             </div>
         </form>
         <script>
-function validateForm() {
-  // Get all the input fields
-  var fnameInput = document.getElementById("fname");
-  var lnameInput = document.getElementById("lname");
-  var emailInput = document.getElementById("email");
-  var passwordInput = document.getElementById("password");
-  var courseInput = document.getElementById("course");
 
-  // Check if all the fields are filled
-  if (fnameInput.value === null || lnameInput.value === null || emailInput.value === null || passwordInput.value === null || courseInput.value === null) {
-    // Show an error message
-    alert("Please enter all the details.");
-    return false;
-  }
-
-  // All the fields are filled, so return true
-  return true;
-}
 </script>
         	</section>
         	</section>

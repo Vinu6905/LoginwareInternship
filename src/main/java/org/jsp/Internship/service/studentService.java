@@ -29,26 +29,31 @@ public class studentService {
 	}
 	
 	public ModelAndView studentlogin(Student student) {
-		
-		 ModelAndView modelAndView = new ModelAndView();
-		 String enteredEmail = student.getEmail();
-		 String enteredPassword = student.getPassword();
-		    
+		ModelAndView modelAndView = new ModelAndView();
+		String enteredEmail = student.getEmail();
+		String enteredPassword = student.getPassword();
+
+		if (enteredEmail == null || enteredEmail.isEmpty()) {
+		    modelAndView.setViewName("student");
+		    modelAndView.addObject("msg", "Please register. No account found!");
+		} else {
 		    Student storedStudent = studentRepository.findByEmail(enteredEmail);
-		    
-		    if (storedStudent != null) {
+
+		    if (storedStudent == null) {
+		        modelAndView.setViewName("student");
+		        modelAndView.addObject("msg", "Please register. No account found!");
+		    } else {
 		        if (storedStudent.getPassword().equals(enteredPassword)) {
 		            modelAndView.setViewName("studentpage");
-		            modelAndView.addObject("student", storedStudent); // Add the student details to the modelAndView
+		            modelAndView.addObject("student", storedStudent); 
 		        } else {
 		            modelAndView.setViewName("student");
 		            modelAndView.addObject("msg", "Incorrect password");
 		        }
-		    } else {
-		        modelAndView.setViewName("student");
-		        modelAndView.addObject("msg", "Incorrect email");
 		    }
-		    return modelAndView;
+		}
+
+		return modelAndView;
 	}	
 }
 

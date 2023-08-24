@@ -37,14 +37,14 @@ public class adminController {
 		return service.loadAdmin(login);
 	}
 	
-	@RequestMapping("/deletbyid/{sid}")
+	@GetMapping("/deletbyid/{sid}")
 	public ModelAndView deletbyId(@PathVariable int sid) {
 		ModelAndView andView=service.deletbyId(sid);
 		return andView;
 	    
 	}	
 
-	@RequestMapping("/list-students")
+	@GetMapping("/list-students")
 	public 	ModelAndView liststudents() {
 		ModelAndView andView= new ModelAndView("list-students");
 		List<Student> list=repository.findAll();
@@ -56,12 +56,7 @@ public class adminController {
 	public String Adminuuu() {
 		return "Adminuuu";
 	}
-//	@GetMapping("/listStudents")
-//	public String listStudents(Model model) {
-//	    List<Student> students = service.getAllStudents();
-//	    model.addAttribute("students", students);
-//	    return "list-students";
-//	}
+
 
 	
 }
