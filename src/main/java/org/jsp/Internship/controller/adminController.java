@@ -52,7 +52,10 @@ public class adminController {
 		return andView;
 	
 	}
-
+	@GetMapping("/Adminuuu")
+	public String Adminuuu() {
+		return "Adminuuu";
+	}
 //	@GetMapping("/listStudents")
 //	public String listStudents(Model model) {
 //	    List<Student> students = service.getAllStudents();

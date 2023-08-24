@@ -16,6 +16,7 @@ public class studentService {
 	studentRepository studentRepository;
 
 	public void save(Student student) {
+		
 		studentRepository.save(student);
 		
 	}

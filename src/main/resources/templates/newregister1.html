@@ -83,7 +83,8 @@
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Email</b></label>
                 <input type="email" class="form-control" name="email">
-            </div>
+          
+              </div>
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Password</b></label>
              <input type="password" value="" id="myInput" name="password"><br>
@@ -97,7 +98,53 @@
 			    x.type = "password";
 			  }
 			}
-			</script>
+			</script> 
+				
+				
+				
+<!--  <div class="mb-3">
+  <label for="password" class="form-label"><b>Password</b></label>
+  <input type="password" value="" id="myInput" name="password" oninput="validatePassword()">
+  <input type="checkbox" onclick="myFunction()">Show Password
+  <p id="passwordError" style="color: red; display: none;">Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.</p>
+</div>
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function validatePassword() {
+    var passwordInput = document.getElementById("myInput");
+    var password = passwordInput.value;
+
+    var uppercaseRegex = /[A-Z]/;
+    var lowercaseRegex = /[a-z]/;
+    var numberRegex = /[0-9]/;
+
+    var passwordError = document.getElementById("passwordError");
+
+    if (
+      password.length >= 8 &&
+      uppercaseRegex.test(password) &&
+      lowercaseRegex.test(password) &&
+      numberRegex.test(password)
+    ) {
+      // Password meets the requirements
+      passwordError.style.display = "none"; // Hide the error message
+    } else {
+      // Password does not meet the requirements
+      passwordError.style.display = "block"; // Show the error message
+      passwordError.textContent = "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.";
+    }
+  }
+</script>-->
+			
 				
             </div>
             
@@ -111,11 +158,33 @@
  						</select>
        
             </div>
+            
+            
             <br>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" onclick="validateForm()">Submit</button>
             </div>
         </form>
+        <script>
+function validateForm() {
+  // Get all the input fields
+  var fnameInput = document.getElementById("fname");
+  var lnameInput = document.getElementById("lname");
+  var emailInput = document.getElementById("email");
+  var passwordInput = document.getElementById("password");
+  var courseInput = document.getElementById("course");
+
+  // Check if all the fields are filled
+  if (fnameInput.value === null || lnameInput.value === null || emailInput.value === null || passwordInput.value === null || courseInput.value === null) {
+    // Show an error message
+    alert("Please enter all the details.");
+    return false;
+  }
+
+  // All the fields are filled, so return true
+  return true;
+}
+</script>
         	</section>
         	</section>
         	</main>
