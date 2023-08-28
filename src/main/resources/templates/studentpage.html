@@ -25,10 +25,30 @@
 </head>
 
 <body>
+
+ <!-- ======= Header ======= -->
+  <header class="header d-flex align-items-center sticky-top" style="padding-right: 5%;"  id="header">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+     
+
+     <!-- Nav Menu -->
+     <nav class="navmenu">
+      <ul>
+        <li ><a href="/qfour" style="font-size:25px !important;">Explore Qfour</a></li>
+      </ul>
+
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav><!-- End Nav Menu -->
+
+    </div>
+  </header><!-- End Header -->
+
 <main id="main">
  <section style="background-color:silver;">
-    
+ 	
        <div class="stats-item text-center w-100 h-100" text-align: center;>
+       
        <h1 text-align: center;><b>My Internships</b></h1>
      <br><br>
 		    <h1>Welcome, <span th:text="${student.fname}"></span>!</h1>
@@ -58,7 +78,8 @@
 
 </table>
 <br><br>
-<h1><a href="" style="color: black; font-size: 25px">Back</a></h1>
+<h1 ><a href="" style="color: black; font-size: 25px">Back</a></h1>
+
 </div>
 </section>
 </main>
