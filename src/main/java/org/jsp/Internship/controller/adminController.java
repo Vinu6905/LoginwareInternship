@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -52,11 +53,26 @@ public class adminController {
 		return andView;
 	
 	}
+
 	@GetMapping("/Adminuuu")
 	public String Adminuuu() {
 		return "Adminuuu";
 	}
 
+	@GetMapping("/enable-student/{sid}")
+	public ModelAndView enableStudent(@PathVariable int sid) {
+		Student student=service.getStudentById(sid);
+		student.setEnabled(true);
+		repository.save(student);
+		return new ModelAndView("redirect:/list-students");
+	}
 
+	@GetMapping("/disable-student/{sid}")
+	public ModelAndView disbleStudent(@PathVariable int sid) {
+		Student student=service.getStudentById(sid);
+		student.setEnabled(false);
+		repository.save(student);
+		return new ModelAndView("redirect:/list-students");
+	}
 	
 }

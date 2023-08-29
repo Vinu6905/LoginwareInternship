@@ -1,7 +1,5 @@
 package org.jsp.Internship.service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.jsp.Internship.entity.Student;
 import org.jsp.Internship.helper.Login;
@@ -43,12 +41,12 @@ public class adminService {
 
 	public ModelAndView deletbyId(int sid) {
 		repository.deleteById(sid);
-		
-		
 		ModelAndView  andView=new ModelAndView("redirect:/list-students");
 		return andView;
 		
-	}	
+	}
+
+	
 	}
 
 

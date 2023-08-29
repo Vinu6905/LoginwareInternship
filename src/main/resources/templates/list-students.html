@@ -38,7 +38,8 @@
 		<th>Email</th>	
 		<th>Password</th>
 		<th>Course</th>
-		<th>DELETE</th>
+		 <th>Status</th>
+         <th>Action</th>
 		</tr>
 		</thead>
 		
@@ -50,7 +51,16 @@
 			<td th:text="${student.email}"></td>
 			<td th:text="${student.password}"></td>
 			<td th:text="${student.course}"></td>
-			<td><a th:href="@{deletbyid/{sid}(sid=${student.sid})}" style="color: red;">DELETE</a></td>
+			 <td>
+              <span th:if="${student.enabled}">Enable</span>
+              <span th:unless="${student.enabled}">Disable</span>
+              </td>
+              <td>
+               <a th:href="@{/enable-student/{sid}(sid=${student.sid})}" style="color: green;">Enable</a>
+                <a th:href="@{/disable-student/{sid}(sid=${student.sid})}" style="color: red;">Disable</a>
+              </td>
+			
+		 	<td><a th:href="@{deletbyid/{sid}(sid=${student.sid})}" style="color: red;">DELETE</a></td> 
 		</tr>
 		</tbody>
 

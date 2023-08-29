@@ -26,20 +26,30 @@ public class Student {
 	private String email;
 	private String password;
 	private String course;
-	public Student( String fname, String lname, String email, String password, String course) {
+	private boolean status;
+	private boolean enabled;
+	public Student(int sid, String fname, String lname, String email, String password, String course, boolean status,
+			boolean enabled) {
 		super();
-		
+		this.sid = sid;
 		this.fname = fname;
 		this.lname = lname;
 		this.email = email;
 		this.password = password;
 		this.course = course;
+		this.status = status;
+		this.enabled = enabled;
 	}
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+	public int getSid() {
+		return sid;
+	}
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
 	public String getFname() {
 		return fname;
 	}
@@ -70,6 +80,20 @@ public class Student {
 	public void setCourse(String course) {
 		this.course = course;
 	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	
 	
 	
 }

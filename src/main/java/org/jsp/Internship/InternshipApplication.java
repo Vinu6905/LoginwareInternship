@@ -1,4 +1,4 @@
-package org.jsp.Internship;
+ package org.jsp.Internship;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
