@@ -19,8 +19,8 @@ public class adminService {
 	
 	public ModelAndView loadAdmin(Login login) {
 		ModelAndView view=new ModelAndView();
-		if(login.getName().equals("admin")) {
-			if(login.getPassword().equals("admin")) {
+		if(login.getName().equals("vinayak")) {
+			if(login.getPassword().equals("vinayak")) {
 				view.setViewName("Adminuuu");
 			}else {
 				view.setViewName("AdminHome");
