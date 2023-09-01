@@ -42,8 +42,7 @@ public class adminService {
 	public ModelAndView deletbyId(int sid) {
 		repository.deleteById(sid);
 		ModelAndView  andView=new ModelAndView("redirect:/list-students");
-		return andView;
-		
+		return andView;		
 	}
 
 	

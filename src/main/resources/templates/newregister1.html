@@ -71,108 +71,114 @@
       <!-- ======= Home Section ======= -->
       <section id="hero" class="d-flex align-items-center">
       
-  <form class="container" th:action="@{/save}" method="post">
-            <div class="mb-3">
-                <label for="fname" class="form-label"><b>First Name</b></label>
-                <input type="text" class="form-control" name="fname">
-            </div>
-            <div class="mb-3">
-                <label for="lname" class="form-label"><b>Last Name</b></label>
-                <input type="text" class="form-control" name="lname">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label"><b>Email</b></label>
-                <input type="email" class="form-control" name="email">
-          
-              </div>
-            <div class="mb-3">
-                <label for="email" class="form-label"><b>Password</b></label>
-             <input type="password" value="" id="myInput" class="form-control" name="password"><br>
-		<input type="checkbox" onclick="myFunction()">Show Password
-		<script>
-			function myFunction() {
-			  var x = document.getElementById("myInput");
-			  if (x.type === "password") {
-			    x.type = "text";
-			  } else {
-			    x.type = "password";
-			  }
-			}
-			</script> 
-				
-				
-				
-<!--  <div class="mb-3">
-  <label for="password" class="form-label"><b>Password</b></label>
-  <input type="password" value="" id="myInput" name="password" oninput="validatePassword()">
-  <input type="checkbox" onclick="myFunction()">Show Password
-  <p id="passwordError" style="color: red; display: none;">Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.</p>
-</div>
+    <!-- <style>
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    
+    /* Adjust the styles for the text fields */
+    input[type="text"].form-control,
+    input[type="email"].form-control,
+    input[type="password"].form-control,
+    select.form-control {
+        /* Add your custom styles for the text fields here */
+        /* For example: */
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>   -->    
+      <form class="container" th:action="@{/save}" method="post" onsubmit="return validateForm()">
+    <div class="mb-3">
+        <label for="fname" class="form-label"><b>First Name</b></label>
+        <input type="text" class="form-control" name="fname" required>
+        <div id="fnameError" class="error-message"></div>
+    </div>
+    <div class="mb-3">
+        <label for="lname" class="form-label"><b>Last Name</b></label>
+        <input type="text" class="form-control" name="lname" required>
+        <div id="lnameError" class="error-message"></div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label"><b>Email</b></label>
+        <input type="email" class="form-control" name="email" required>
+        <div id="emailError" class="error-message"></div>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label"><b>Password</b></label>
+        <input type="password" id="password" class="form-control" name="password" required>
+        <div id="passwordError" class="error-message"></div>
+    </div>
+    <div class="mb-3">
+        <label for="dropdown"><b>Intern Course</b></label>
+        <select id="dropdown" name="course" required>
+            <option value="" disabled selected>Select a course</option>
+            <option value="python">Python</option>
+            <option value="embedded c">Embedded C</option>
+            <option value="ai">AI & ML</option>
+            <option value="c">C</option>
+        </select>
+        <div id="courseError" class="error-message"></div>
+    </div>
+    <br>
+    <div class="text-left">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-primary" style="margin-left: 25px" href="/mainhome">Back</a>
+    </div>
+</form>
 
 <script>
-  function myFunction() {
-    var x = document.getElementById("myInput");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
+    function validateForm() {
+        var fname = document.forms[0].fname.value;
+        var lname = document.forms[0].lname.value;
+        var email = document.forms[0].email.value;
+        var password = document.forms[0].password.value;
+        var course = document.forms[0].course.value;
 
-  function validatePassword() {
-    var passwordInput = document.getElementById("myInput");
-    var password = passwordInput.value;
+        var fnameError = document.getElementById("fnameError");
+        var lnameError = document.getElementById("lnameError");
+        var emailError = document.getElementById("emailError");
+        var passwordError = document.getElementById("passwordError");
+        var courseError = document.getElementById("courseError");
 
-    var uppercaseRegex = /[A-Z]/;
-    var lowercaseRegex = /[a-z]/;
-    var numberRegex = /[0-9]/;
+        fnameError.textContent = "";
+        lnameError.textContent = "";
+        emailError.textContent = "";
+        passwordError.textContent = "";
+        courseError.textContent = "";
 
-    var passwordError = document.getElementById("passwordError");
+        if (fname === "") {
+            fnameError.textContent = "Please enter your first name.";
+            return false;
+        }
+        if (lname === "") {
+            lnameError.textContent = "Please enter your last name.";
+            return false;
+        }
+        if (email === "") {
+            emailError.textContent = "Please enter your email.";
+            return false;
+        }
+        if (password === "") {
+            passwordError.textContent = "Please enter your password.";
+            return false;
+        }
+        
+        if (course === "") {
+            courseError.textContent = "Please select a course.";
+            return false;
+        }
 
-    if (
-      password.length >= 8 &&
-      uppercaseRegex.test(password) &&
-      lowercaseRegex.test(password) &&
-      numberRegex.test(password)
-    ) {
-      // Password meets the requirements
-      passwordError.style.display = "none"; // Hide the error message
-    } else {
-      // Password does not meet the requirements
-      passwordError.style.display = "block"; // Show the error message
-      passwordError.textContent = "Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one number.";
-    }
-  }
-</script>-->
-			
-				
-            </div>
-            
-            <div class="mb-3">
-            <label for="dropdown"><b>Intern Course</b></label>
-  						<select id="dropdown"  name="course">
- 						<option value="" disabled selected>Select a course</option>
-   					  <option value="python">Python</option>
-  					  <option value="embedded c">Embedded C</option>
-  					   <option value="ai">AI & ML</option>
-  					    <option value="embedded c">C</option>
- 						</select>
-       
-            </div>
-            
-            
-            <br>
-            <div class="text-left">
-                <button type="submit" class="btn btn-primary" onclick="validateForm()">Submit</button>
-                <a class="btn btn-primary" style="margin-left: 25px" href="/mainhome" >Back</a>
-            </div>
-        </form>
-        <script>
-
-</script>
-        	</section>
-        	</section>
-        	</main>
+        return true;
+    }d   
+</script>   
+</section>
+</section>
+</main>
         
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">

@@ -16,9 +16,7 @@
 		studentRepository studentRepository;
 	
 		public void save(Student student) {
-			
-			studentRepository.save(student);
-			
+			studentRepository.save(student);	
 		}
 		
 		public ModelAndView showstudent(Student student) {
@@ -30,6 +28,7 @@
 		
 		public ModelAndView studentlogin(Student student) {
 		    ModelAndView modelAndView = new ModelAndView();
+		    
 		    String enteredEmail = student.getEmail();
 		    String enteredPassword = student.getPassword();
 	
@@ -52,7 +51,6 @@
 		            		modelAndView.setViewName("student");
 		            		modelAndView.addObject("msg" ,"Admin has not Approved your Account");
 		            	}
-		              
 		            } else {
 		                modelAndView.setViewName("student");
 		                modelAndView.addObject("msg", "Incorrect password");
